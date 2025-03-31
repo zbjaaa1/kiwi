@@ -1,4 +1,4 @@
-name: Build
+name: Build zip
 on:
   workflow_dispatch:
 
