@@ -18,14 +18,12 @@ jobs:
 
       - name: pmbootstrap init
         run: |
-          sudo mv pmbootstrap_v3.cfg -v /home/runner/.config/pmbootstrap_v3.cfg
-          sudo chmod 777 -v /home/runner/.config/pmbootstrap_v3.cfg
+          mv pmbootstrap_v3.cfg -v .config/pmbootstrap_v3.cfg
+          git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v24.12 .local/var/pmbootstrap/cache_git/pmaports
           yes '' | pmbootstrap --details-to-stdout init
           
       - name: pmbootstrap install
         run: |
-          sudo mv pmaports.cfg -v /home/runner/.local/var/pmbootstrap/cache_git/pmaports/pmaports.cfg
-          sudo chmod 777 -v /home/runner/.local/var/pmbootstrap/cache_git/pmaports/pmaports.cfg
           pmbootstrap install --password 147147 --recovery-install-partition=data
           pmbootstrap export
           
