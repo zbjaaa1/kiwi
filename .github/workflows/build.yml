@@ -29,8 +29,6 @@ jobs:
           
       - name: pmbootstrap install
         run: |
-          sudo mv pmaports.cfg -v /home/runner/.local/var/pmbootstrap/cache_git/pmaports/pmaports.cfg
-          sudo chmod 777 -v /home/runner/.local/var/pmbootstrap/cache_git/pmaports/pmaports.cfg
           pmbootstrap install --password 147147 --android-recovery-zip  --recovery-install-partition=data
           pmbootstrap export
           
