@@ -19,8 +19,8 @@ jobs:
       - name: pmbootstrap init
         run: |
           mv pmbootstrap_v3.cfg -v ~/.config/pmbootstrap_v3.cfg
-          git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v24.12 ~/.local/var/pmbootstrap/cache_git/pmaports
-          pmbootstrap --details-to-stdout --assume-yes init
+          git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v24.12 pmaports
+          pmbootstrap --aports pmaports --assume-yes init
           
       - name: pmbootstrap install
         run: |
