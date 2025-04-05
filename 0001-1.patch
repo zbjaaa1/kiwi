@@ -1,0 +1,84 @@
+From d71a2936512575206e4f3a0683d6fa18f1e3d98f Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Sat, 5 Apr 2025 14:32:32 +0800
+Subject: [PATCH] 1
+
+---
+ device/testing/device-xiaomi-aries/APKBUILD                 | 6 +++---
+ device/testing/device-xiaomi-aries/deviceinfo               | 2 +-
+ device/testing/linux-xiaomi-aries/APKBUILD                  | 6 +++---
+ ...{config-xiaomi-aries.armhf => config-xiaomi-aries.armv7} | 0
+ 4 files changed, 7 insertions(+), 7 deletions(-)
+ rename device/testing/linux-xiaomi-aries/{config-xiaomi-aries.armhf => config-xiaomi-aries.armv7} (100%)
+
+diff --git a/device/testing/device-xiaomi-aries/APKBUILD b/device/testing/device-xiaomi-aries/APKBUILD
+index e72aec170..27f843905 100644
+--- a/device/testing/device-xiaomi-aries/APKBUILD
++++ b/device/testing/device-xiaomi-aries/APKBUILD
+@@ -1,11 +1,11 @@
+ # Reference: <https://postmarketos.org/devicepkg>
+ pkgname=device-xiaomi-aries
+ pkgdesc="Xiaomi Mi 2"
+-pkgver=2
++pkgver=3
+ pkgrel=0
+ url="https://postmarketos.org"
+ license="MIT"
+-arch="armhf"
++arch="armv7"
+ options="!check !archcheck"
+ depends="postmarketos-base linux-xiaomi-aries mkbootimg mdss-fb-init-hack"
+ makedepends="devicepkg-dev"
+@@ -21,6 +21,6 @@ package() {
+ 
+ 
+ sha512sums="
+-0b4a0a62f65242f59448502f39d534e7160c20490c5aaa546e7b49050942521f7196c8c178262b1b77ffb31b08edcc476e1452cf54a1877e4373c8b6f26ef0f9  deviceinfo
++0c9ecd4a22cc3cd00e186bde2d331f71cbc5d904bbf18c7892788dc764862c01cd08b3fcfa672a8ed61d6c2ba255bd6ac474c6fe898051b550f7be074c3ef6a2  deviceinfo
+ 73d199fdf7eccc2041ea8fabecc8b833d845791d5e7740b9d8e81e8fb917a0db55958f8c0d5499142a5726cf1ee40d6eb0ca16f7dc160276354d940b5abeeedc  initfs-hook.sh
+ "
+diff --git a/device/testing/device-xiaomi-aries/deviceinfo b/device/testing/device-xiaomi-aries/deviceinfo
+index 31d103899..00aaf362c 100644
+--- a/device/testing/device-xiaomi-aries/deviceinfo
++++ b/device/testing/device-xiaomi-aries/deviceinfo
+@@ -6,7 +6,7 @@ deviceinfo_name="Xiaomi Mi 2"
+ deviceinfo_manufacturer="Xiaomi"
+ deviceinfo_codename="xiaomi-aries"
+ deviceinfo_year="2012"
+-deviceinfo_arch="armhf"
++deviceinfo_arch="armv7"
+ 
+ # Device related
+ deviceinfo_chassis="handset"
+diff --git a/device/testing/linux-xiaomi-aries/APKBUILD b/device/testing/linux-xiaomi-aries/APKBUILD
+index 0e612ba23..8acbce218 100644
+--- a/device/testing/linux-xiaomi-aries/APKBUILD
++++ b/device/testing/linux-xiaomi-aries/APKBUILD
+@@ -3,9 +3,9 @@
+ 
+ pkgname=linux-xiaomi-aries
+ pkgver=3.4.113
+-pkgrel=4
++pkgrel=5
+ pkgdesc="Xiaomi Mi 2 kernel fork"
+-arch="armhf"
++arch="armv7"
+ _carch="arm"
+ _flavor="xiaomi-aries"
+ url="https://kernel.org"
+@@ -49,7 +49,7 @@ package() {
+ }
+ 
+ sha512sums="3d461173c0ec72d243870bcb2ce1935b2ba1652a532b9b09ef0a3823b5961a3d58415fce2d57f054e1945dc9e70c5c9a68fc45aad26a0adb894bc96120847bc9  linux-xiaomi-aries-6a30963cf10e5b7cc938f3ac7b22af4ad72c0bf9.tar.gz
+-baee319e4fa5fa3e1f517daff7a640291ae34b154153754b520b124b02127aa2e0402d33ef4b082914d4eee7654072bd34fe80e4f43fa7ccd61f407e907216ba  config-xiaomi-aries.armhf
++baee319e4fa5fa3e1f517daff7a640291ae34b154153754b520b124b02127aa2e0402d33ef4b082914d4eee7654072bd34fe80e4f43fa7ccd61f407e907216ba  config-xiaomi-aries.armv7
+ 77eba606a71eafb36c32e9c5fe5e77f5e4746caac292440d9fb720763d766074a964db1c12bc76fe583c5d1a5c864219c59941f5e53adad182dbc70bf2bc14a7  gcc7-give-up-on-ilog2-const-optimizations.patch
+ 197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch
+ 87ff591431c34d920527de8d7640b93bfc1f09ad541a58645969bc1e6b64b89e7443c38dd263cafa9a6090f4a74e0ffcd49f94dba0a4f1df5306dad106ecfb3f  02_gpu-msm-fix-gcc5-compile.patch
+diff --git a/device/testing/linux-xiaomi-aries/config-xiaomi-aries.armhf b/device/testing/linux-xiaomi-aries/config-xiaomi-aries.armv7
+similarity index 100%
+rename from device/testing/linux-xiaomi-aries/config-xiaomi-aries.armhf
+rename to device/testing/linux-xiaomi-aries/config-xiaomi-aries.armv7
+-- 
+2.49.0
+
