@@ -18,8 +18,13 @@ jobs:
 
       - name: pmbootstrap init
         run: |
-          sudo mv pmbootstrap_v3.cfg -v /home/runner/.config/pmbootstrap_v3.cfg
-          sudo chmod 777 -v /home/runner/.config/pmbootstrap_v3.cfg
+          git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v24.12 .local/var/pmbootstrap/cache_git/pmaports
+          mv 0001-1.patch .local/var/pmbootstrap/cache_git/pmaports/0001-1.patch
+          cd .local/var/pmbootstrap/cache_git/pmaports
+          git apply 0001-1.patch
+          cd $GITHUB_WORKSPACE
+          ls
+          mv pmbootstrap_v3.cfg -v ~/.config/pmbootstrap_v3.cfg
           yes '' | pmbootstrap --details-to-stdout init
           
       - name: pmbootstrap install
@@ -37,6 +42,6 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: kiwi
+          name: aries
           path: /tmp/postmarketOS-export/*.zip
           retention-days: 1
