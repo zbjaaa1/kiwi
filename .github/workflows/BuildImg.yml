@@ -18,8 +18,8 @@ jobs:
 
       - name: pmbootstrap init
         run: |
-          git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v24.12 .local/var/pmbootstrap/cache_git/pmaports
-          mv 0001-1.patch .local/var/pmbootstrap/cache_git/pmaports/0001-1.patch
+          git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v24.12 ~/.local/var/pmbootstrap/cache_git/pmaports
+          mv 0001-1.patch ~/.local/var/pmbootstrap/cache_git/pmaports/0001-1.patch
           cd .local/var/pmbootstrap/cache_git/pmaports
           git apply 0001-1.patch
           cd $GITHUB_WORKSPACE
