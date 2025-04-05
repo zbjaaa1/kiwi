@@ -19,7 +19,7 @@ jobs:
       - name: pmbootstrap init
         run: |
           git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v24.12 pmaports
-          pmbootstrap --config pmbootstrap_v3.cfg --aports pmaports --assume-yes --details-to-stdout init
+          pmbootstrap --config pmbootstrap_v3.cfg --aports pmaports --assume-yes init
           
       - name: pmbootstrap install
         run: |
@@ -29,7 +29,7 @@ jobs:
       - name: log
         if: ${{ failure() }}
         run: |
-          cat ~/.local/var/pmbootstrap/log.txt
+          pmbootstrap log
           
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
