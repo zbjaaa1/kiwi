@@ -18,6 +18,7 @@ jobs:
 
       - name: pmbootstrap init
         run: |
+          sudo chmod 777 pmbootstrap_v3.cfg
           git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v24.12 pmaports
           pmbootstrap --config pmbootstrap_v3.cfg --aports pmaports --assume-yes init
           
