@@ -18,8 +18,8 @@ jobs:
 
       - name: pmbootstrap init
         run: |
-          sudo mv pmbootstrap_v3.cfg -v ~/.config/pmbootstrap_v3.cfg
-          git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v24.12 .local/var/pmbootstrap/cache_git/pmaports
+          mv pmbootstrap_v3.cfg -v ~/.config/pmbootstrap_v3.cfg
+          git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v24.12 ~/.local/var/pmbootstrap/cache_git/pmaports
           yes '' | pmbootstrap --details-to-stdout init
           
       - name: pmbootstrap install
@@ -30,7 +30,7 @@ jobs:
       - name: log
         if: ${{ failure() }}
         run: |
-          cat /home/runner/.local/var/pmbootstrap/log.txt
+          cat ~/.local/var/pmbootstrap/log.txt
           
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
