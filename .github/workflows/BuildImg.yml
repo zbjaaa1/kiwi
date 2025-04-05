@@ -22,7 +22,8 @@ jobs:
           mv 0001-1.patch .local/var/pmbootstrap/cache_git/pmaports/0001-1.patch
           cd .local/var/pmbootstrap/cache_git/pmaports
           git apply 0001-1.patch
-          cd
+          cd $GITHUB_WORKSPACE
+          ls
           mv pmbootstrap_v3.cfg -v ~/.config/pmbootstrap_v3.cfg
           yes '' | pmbootstrap --details-to-stdout init
           
