@@ -1,14 +1,14 @@
-From 08d52ea2e07d5cc0059d887996b09c9e9f239b00 Mon Sep 17 00:00:00 2001
+From d71a2936512575206e4f3a0683d6fa18f1e3d98f Mon Sep 17 00:00:00 2001
 From: Your Name <you@example.com>
-Date: Sun, 6 Apr 2025 09:11:46 +0800
+Date: Sat, 5 Apr 2025 14:32:32 +0800
 Subject: [PATCH] 1
 
 ---
- device/testing/device-xiaomi-aries/APKBUILD       |  6 +++---
- device/testing/device-xiaomi-aries/deviceinfo     |  2 +-
- device/testing/linux-xiaomi-aries/APKBUILD        | 15 +++++++++++----
- ...aomi-aries.armhf => config-xiaomi-aries.armv7} |  0
- 4 files changed, 15 insertions(+), 8 deletions(-)
+ device/testing/device-xiaomi-aries/APKBUILD                 | 6 +++---
+ device/testing/device-xiaomi-aries/deviceinfo               | 2 +-
+ device/testing/linux-xiaomi-aries/APKBUILD                  | 6 +++---
+ ...{config-xiaomi-aries.armhf => config-xiaomi-aries.armv7} | 0
+ 4 files changed, 7 insertions(+), 7 deletions(-)
  rename device/testing/linux-xiaomi-aries/{config-xiaomi-aries.armhf => config-xiaomi-aries.armv7} (100%)
 
 diff --git a/device/testing/device-xiaomi-aries/APKBUILD b/device/testing/device-xiaomi-aries/APKBUILD
@@ -51,10 +51,10 @@ index 31d103899..00aaf362c 100644
  # Device related
  deviceinfo_chassis="handset"
 diff --git a/device/testing/linux-xiaomi-aries/APKBUILD b/device/testing/linux-xiaomi-aries/APKBUILD
-index 0e612ba23..dedb7d688 100644
+index 0e612ba23..8acbce218 100644
 --- a/device/testing/linux-xiaomi-aries/APKBUILD
 +++ b/device/testing/linux-xiaomi-aries/APKBUILD
-@@ -3,15 +3,22 @@
+@@ -3,9 +3,9 @@
  
  pkgname=linux-xiaomi-aries
  pkgver=3.4.113
@@ -66,21 +66,7 @@ index 0e612ba23..dedb7d688 100644
  _carch="arm"
  _flavor="xiaomi-aries"
  url="https://kernel.org"
- license="GPL-2.0-only"
- options="!strip !check !tracedeps pmb:cross-native"
--makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev devicepkg-dev xz"
-+makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev devicepkg-dev xz gcc4"
-+
-+# Compiler: GCC 6 (doesn't boot when compiled with newer versions)
-+if [ "${CC:0:5}" != "gcc6-" ]; then
-+	CC="gcc6-$CC"
-+	HOSTCC="gcc6-gcc"
-+	CROSS_COMPILE="gcc6-$CROSS_COMPILE"
-+fi
- 
- # Source
- _username="MoKee"
-@@ -49,7 +56,7 @@ package() {
+@@ -49,7 +49,7 @@ package() {
  }
  
  sha512sums="3d461173c0ec72d243870bcb2ce1935b2ba1652a532b9b09ef0a3823b5961a3d58415fce2d57f054e1945dc9e70c5c9a68fc45aad26a0adb894bc96120847bc9  linux-xiaomi-aries-6a30963cf10e5b7cc938f3ac7b22af4ad72c0bf9.tar.gz
@@ -95,4 +81,3 @@ rename from device/testing/linux-xiaomi-aries/config-xiaomi-aries.armhf
 rename to device/testing/linux-xiaomi-aries/config-xiaomi-aries.armv7
 -- 
 2.49.0
-
