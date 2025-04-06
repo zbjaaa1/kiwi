@@ -69,7 +69,7 @@ index 0e612ba23..dedb7d688 100644
  license="GPL-2.0-only"
  options="!strip !check !tracedeps pmb:cross-native"
 -makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev devicepkg-dev xz"
-+makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev devicepkg-dev xz gcc4-armv7"
++makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev devicepkg-dev xz gcc4"
 +
 +# Compiler: GCC 4 (doesn't boot when compiled with newer versions)
 +if [ "${CC:0:5}" != "gcc4-" ]; then
