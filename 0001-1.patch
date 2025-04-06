@@ -1,15 +1,17 @@
-From d71a2936512575206e4f3a0683d6fa18f1e3d98f Mon Sep 17 00:00:00 2001
+From 26c4e59178bbe06e2da287fdb5a1f9ead09cbbfc Mon Sep 17 00:00:00 2001
 From: Your Name <you@example.com>
-Date: Sat, 5 Apr 2025 14:32:32 +0800
+Date: Sun, 6 Apr 2025 08:42:13 +0800
 Subject: [PATCH] 1
 
 ---
- device/testing/device-xiaomi-aries/APKBUILD                 | 6 +++---
- device/testing/device-xiaomi-aries/deviceinfo               | 2 +-
- device/testing/linux-xiaomi-aries/APKBUILD                  | 6 +++---
- ...{config-xiaomi-aries.armhf => config-xiaomi-aries.armv7} | 0
- 4 files changed, 7 insertions(+), 7 deletions(-)
+ device/testing/device-xiaomi-aries/APKBUILD   |   6 +-
+ device/testing/device-xiaomi-aries/deviceinfo |   2 +-
+ device/testing/linux-xiaomi-aries/APKBUILD    |   9 +-
+ ...-aries.armhf => config-xiaomi-aries.armv7} |   0
+ ...ce-Sun-Solaris-style-flag-on-section.patch | 100 ++++++++++++++++++
+ 5 files changed, 109 insertions(+), 8 deletions(-)
  rename device/testing/linux-xiaomi-aries/{config-xiaomi-aries.armhf => config-xiaomi-aries.armv7} (100%)
+ create mode 100644 device/testing/linux-xiaomi-aries/linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 
 diff --git a/device/testing/device-xiaomi-aries/APKBUILD b/device/testing/device-xiaomi-aries/APKBUILD
 index e72aec170..27f843905 100644
@@ -51,7 +53,7 @@ index 31d103899..00aaf362c 100644
  # Device related
  deviceinfo_chassis="handset"
 diff --git a/device/testing/linux-xiaomi-aries/APKBUILD b/device/testing/linux-xiaomi-aries/APKBUILD
-index 0e612ba23..8acbce218 100644
+index 0e612ba23..af4f29d3c 100644
 --- a/device/testing/linux-xiaomi-aries/APKBUILD
 +++ b/device/testing/linux-xiaomi-aries/APKBUILD
 @@ -3,9 +3,9 @@
@@ -75,10 +77,123 @@ index 0e612ba23..8acbce218 100644
  77eba606a71eafb36c32e9c5fe5e77f5e4746caac292440d9fb720763d766074a964db1c12bc76fe583c5d1a5c864219c59941f5e53adad182dbc70bf2bc14a7  gcc7-give-up-on-ilog2-const-optimizations.patch
  197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch
  87ff591431c34d920527de8d7640b93bfc1f09ad541a58645969bc1e6b64b89e7443c38dd263cafa9a6090f4a74e0ffcd49f94dba0a4f1df5306dad106ecfb3f  02_gpu-msm-fix-gcc5-compile.patch
+@@ -58,4 +58,5 @@ f85ced49ee2f2461adea68dac0a10452aa809a7d41d869092d94eb085344919a9a385dec0c48011f
+ 71465422481ff79d2ddde7a9b55531b963f9a72efa9df47ecd5666353fbfb72e698290fa9e7f51522e2dadb2fa719ad5fc05fabe6c4ff7b9d387243a46d97d72  05_fix-adreno-trace.patch
+ f58e3d2d327f2fc06b3599903eca8113facd550010e8e0db4ace8fbdeb042f62fdca61e9748770a8891e21dc8211c8366518e8e16c5d61c6b49a88d34a16493c  06_fix-kgsl-events-include.patch
+ 30b66b3b82a762a70381cc3e000f092c739714b116ff7fa4d13108e782789dce2f6e1490de54d720a8870fc52d379bd266abb873f79f7a021c0eced0fdbc70af  07_fix-kgsl-trace-h.patch
+-67c5d25b7d18644266ea043430655f46edf9cb7ff82612e25e63015a183206966cb41865236ebf642e83bed454cdc0392400e26f4be14f649c615415599229c7  08_fix-red-screen.patch"
++67c5d25b7d18644266ea043430655f46edf9cb7ff82612e25e63015a183206966cb41865236ebf642e83bed454cdc0392400e26f4be14f649c615415599229c7  08_fix-red-screen.patch
++b14c0033045dd1ec5dd03612d8fb6361c4a0fa3eb54f7e262628d18756456c2e569a437d1b35099a8302577d1e471bbf9222b4b1b30f6578af7e4342a0009815  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch"
 diff --git a/device/testing/linux-xiaomi-aries/config-xiaomi-aries.armhf b/device/testing/linux-xiaomi-aries/config-xiaomi-aries.armv7
 similarity index 100%
 rename from device/testing/linux-xiaomi-aries/config-xiaomi-aries.armhf
 rename to device/testing/linux-xiaomi-aries/config-xiaomi-aries.armv7
+diff --git a/device/testing/linux-xiaomi-aries/linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch b/device/testing/linux-xiaomi-aries/linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+new file mode 100644
+index 000000000..b338d0a53
+--- /dev/null
++++ b/device/testing/linux-xiaomi-aries/linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+@@ -0,0 +1,100 @@
++From 3020e3a81b63e05891ef5d40f3acfbd00040ba17 Mon Sep 17 00:00:00 2001
++From: Nick Desaulniers <ndesaulniers@google.com>
++Date: Mon, 4 Nov 2019 19:31:45 +0100
++Subject: [PATCH] ARM: 8933/1: replace Sun/Solaris style flag on section
++ directive
++
++It looks like a section directive was using "Solaris style" to declare
++the section flags. Replace this with the GNU style so that Clang's
++integrated assembler can assemble this directive.
++
++The modified instances were identified via:
++$ ag \.section | grep #
++
++Link: https://ftp.gnu.org/old-gnu/Manuals/gas-2.9.1/html_chapter/as_7.html#SEC119
++Link: https://github.com/ClangBuiltLinux/linux/issues/744
++Link: https://bugs.llvm.org/show_bug.cgi?id=43759
++Link: https://reviews.llvm.org/D69296
++
++Acked-by: Nicolas Pitre <nico@fluxnic.net>
++Reviewed-by: Ard Biesheuvel <ardb@kernel.org>
++Reviewed-by: Stefan Agner <stefan@agner.ch>
++Signed-off-by: Nick Desaulniers <ndesaulniers@google.com>
++Suggested-by: Fangrui Song <maskray@google.com>
++Suggested-by: Jian Cai <jiancai@google.com>
++Suggested-by: Peter Smith <peter.smith@linaro.org>
++Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
++[ partial backport to 3.4 ]
++---
++ arch/arm/boot/bootp/init.S            | 2 +-
++ arch/arm/boot/compressed/big-endian.S | 2 +-
++ arch/arm/boot/compressed/head.S       | 2 +-
++ arch/arm/boot/compressed/piggy.lzma.S | 2 +-
++ arch/arm/mm/proc-v7.S                 | 2 +-
++ 5 files changed, 5 insertions(+), 5 deletions(-)
++
++diff --git a/arch/arm/boot/bootp/init.S b/arch/arm/boot/bootp/init.S
++index 78b508075161..868eeeaaa46e 100644
++--- a/arch/arm/boot/bootp/init.S
+++++ b/arch/arm/boot/bootp/init.S
++@@ -16,7 +16,7 @@
++  *  size immediately following the kernel, we could build this into
++  *  a binary blob, and concatenate the zImage using the cat command.
++  */
++-		.section .start,#alloc,#execinstr
+++		.section .start, "ax"
++ 		.type	_start, #function
++ 		.globl	_start
++ 
++diff --git a/arch/arm/boot/compressed/big-endian.S b/arch/arm/boot/compressed/big-endian.S
++index 25ab26f1c6f0..f22428e275f8 100644
++--- a/arch/arm/boot/compressed/big-endian.S
+++++ b/arch/arm/boot/compressed/big-endian.S
++@@ -5,7 +5,7 @@
++  *  Author: Nicolas Pitre
++  */
++ 
++-	.section ".start", #alloc, #execinstr
+++	.section ".start", "ax"
++ 
++ 	mrc	p15, 0, r0, c1, c0, 0	@ read control reg
++ 	orr	r0, r0, #(1 << 7)	@ enable big endian mode
++diff --git a/arch/arm/boot/compressed/head.S b/arch/arm/boot/compressed/head.S
++index 77a716bdf4d3..b70606652d21 100644
++--- a/arch/arm/boot/compressed/head.S
+++++ b/arch/arm/boot/compressed/head.S
++@@ -113,7 +113,7 @@
++ #endif
++ 		.endm
++ 
++-		.section ".start", #alloc, #execinstr
+++		.section ".start", "ax"
++ /*
++  * sort out different calling conventions
++  */
++diff --git a/arch/arm/boot/compressed/piggy.lzma.S b/arch/arm/boot/compressed/piggy.lzma.S
++index d7e69cffbc0a..cfea81ae8f4b 100644
++--- a/arch/arm/boot/compressed/piggy.lzma.S
+++++ b/arch/arm/boot/compressed/piggy.lzma.S
++@@ -1,4 +1,4 @@
++-	.section .piggydata,#alloc
+++	.section .piggydata, "a"
++ 	.globl	input_data
++ input_data:
++ 	.incbin	"arch/arm/boot/compressed/piggy.lzma"
++diff --git a/arch/arm/mm/proc-v7.S b/arch/arm/mm/proc-v7.S
++index 69363be2f241..321cb1c6a091 100644
++--- a/arch/arm/mm/proc-v7.S
+++++ b/arch/arm/mm/proc-v7.S
++@@ -422,7 +422,7 @@ __v7_setup_stack:
++ 	string	cpu_elf_name, "v7"
++ 	.align
++ 
++-	.section ".proc.info.init", #alloc, #execinstr
+++	.section ".proc.info.init", "ax"
++ 
++ 	/*
++ 	 * Standard v7 proc info content
++-- 
++2.30.2
++
 -- 
 2.49.0
 
