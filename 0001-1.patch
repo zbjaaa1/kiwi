@@ -1,14 +1,14 @@
-From de6ed08d0d544dd40b9fc299ceb02b802ded8667 Mon Sep 17 00:00:00 2001
+From 08d52ea2e07d5cc0059d887996b09c9e9f239b00 Mon Sep 17 00:00:00 2001
 From: Your Name <you@example.com>
-Date: Sun, 6 Apr 2025 09:01:11 +0800
+Date: Sun, 6 Apr 2025 09:11:46 +0800
 Subject: [PATCH] 1
 
 ---
- device/testing/device-xiaomi-aries/APKBUILD         |  6 +++---
- device/testing/device-xiaomi-aries/deviceinfo       |  2 +-
- device/testing/linux-xiaomi-aries/APKBUILD          | 13 ++++++++++---
- ...xiaomi-aries.armhf => config-xiaomi-aries.armv7} |  0
- 4 files changed, 14 insertions(+), 7 deletions(-)
+ device/testing/device-xiaomi-aries/APKBUILD       |  6 +++---
+ device/testing/device-xiaomi-aries/deviceinfo     |  2 +-
+ device/testing/linux-xiaomi-aries/APKBUILD        | 15 +++++++++++----
+ ...aomi-aries.armhf => config-xiaomi-aries.armv7} |  0
+ 4 files changed, 15 insertions(+), 8 deletions(-)
  rename device/testing/linux-xiaomi-aries/{config-xiaomi-aries.armhf => config-xiaomi-aries.armv7} (100%)
 
 diff --git a/device/testing/device-xiaomi-aries/APKBUILD b/device/testing/device-xiaomi-aries/APKBUILD
@@ -51,10 +51,10 @@ index 31d103899..00aaf362c 100644
  # Device related
  deviceinfo_chassis="handset"
 diff --git a/device/testing/linux-xiaomi-aries/APKBUILD b/device/testing/linux-xiaomi-aries/APKBUILD
-index 0e612ba23..5aed61f30 100644
+index 0e612ba23..dedb7d688 100644
 --- a/device/testing/linux-xiaomi-aries/APKBUILD
 +++ b/device/testing/linux-xiaomi-aries/APKBUILD
-@@ -3,9 +3,9 @@
+@@ -3,15 +3,22 @@
  
  pkgname=linux-xiaomi-aries
  pkgver=3.4.113
@@ -66,20 +66,20 @@ index 0e612ba23..5aed61f30 100644
  _carch="arm"
  _flavor="xiaomi-aries"
  url="https://kernel.org"
-@@ -13,6 +13,13 @@ license="GPL-2.0-only"
+ license="GPL-2.0-only"
  options="!strip !check !tracedeps pmb:cross-native"
- makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev devicepkg-dev xz"
- 
-+# Compiler: GCC 6 (doesn't boot when compiled with newer versions)
-+if [ "${CC:0:5}" != "gcc6-" ]; then
-+	CC="gcc6-$CC"
-+	HOSTCC="gcc6-gcc"
-+	CROSS_COMPILE="gcc6-$CROSS_COMPILE"
-+fi
+-makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev devicepkg-dev xz"
++makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev devicepkg-dev xz gcc4"
 +
++# Compiler: GCC 4 (doesn't boot when compiled with newer versions)
++if [ "${CC:0:5}" != "gcc4-" ]; then
++	CC="gcc4-$CC"
++	HOSTCC="gcc4-gcc"
++	CROSS_COMPILE="gcc4-$CROSS_COMPILE"
++fi
+ 
  # Source
  _username="MoKee"
- _repository="android_kernel_xiaomi_aries"
 @@ -49,7 +56,7 @@ package() {
  }
  
