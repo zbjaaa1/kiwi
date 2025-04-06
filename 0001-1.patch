@@ -70,11 +70,11 @@ index 0e612ba23..5aed61f30 100644
  options="!strip !check !tracedeps pmb:cross-native"
  makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev devicepkg-dev xz"
  
-+# Compiler: GCC 4 (doesn't boot when compiled with newer versions)
-+if [ "${CC:0:5}" != "gcc4-" ]; then
-+	CC="gcc4-$CC"
-+	HOSTCC="gcc4-gcc"
-+	CROSS_COMPILE="gcc4-$CROSS_COMPILE"
++# Compiler: GCC 6 (doesn't boot when compiled with newer versions)
++if [ "${CC:0:5}" != "gcc6-" ]; then
++	CC="gcc6-$CC"
++	HOSTCC="gcc6-gcc"
++	CROSS_COMPILE="gcc6-$CROSS_COMPILE"
 +fi
 +
  # Source
