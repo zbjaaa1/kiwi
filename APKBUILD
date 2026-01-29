@@ -42,7 +42,7 @@ esac
 # Source
 _tag=v${pkgver//_/-}-msm8916
 source="
-	$pkgname-$_tag.tar.gz::$url/archive/$_tag.tar.gz
+    $pkgname-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz
 	config-$_flavor.aarch64
 	config-$_flavor.armv7
 "
