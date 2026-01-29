@@ -1,0 +1,31 @@
+name: Build
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out build configurations
+        uses: actions/checkout@v4
+     
+      - name: Install pmbootstrap from git
+        run: |
+          git clone --depth=1 https://gitlab.postmarketos.org/postmarketOS/pmbootstrap.git
+          mkdir -p ~/.local/bin
+          ln -s "$PWD/pmbootstrap/pmbootstrap.py" ~/.local/bin/pmbootstrap
+          pmbootstrap --version
+
+      - name: pmbootstrap init
+        run: |
+          git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v25.12 ~/.local/var/pmbootstrap/cache_git/pmaports
+          
+          mv pmbootstrap_v3.cfg -v ~/.config/pmbootstrap_v3.cfg
+          yes '' | pmbootstrap --details-to-stdout init
+          
+      - name: pmbootstrap install
+        run: |
+          ls
+          
+
+          
