@@ -19,7 +19,6 @@ jobs:
       - name: pmbootstrap init
         run: |
           git clone https://gitlab.postmarketos.org/postmarketOS/pmaports.git -b v25.12 ~/.local/var/pmbootstrap/cache_git/pmaports
-          # mv -f APKBUILD  ~/.local/var/pmbootstrap/cache_git/pmaports/device/testing/linux-postmarketos-qcom-msm8916/
           mv pmbootstrap_v3.cfg -v ~/.config/pmbootstrap_v3.cfg
           yes '' | pmbootstrap --details-to-stdout init
           
